@@ -1,6 +1,4 @@
-# DemoDotNet9API &nbsp;![.NET](https://img.shields.io/badge/.NET%209-512BD4?logo=dotnet&logoColor=white) ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-5C2D91?logo=dotnet&logoColor=white)  ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
-
-# AsynchronousPrincipleService
+# AsynchronousPrincipleService &nbsp;![.NET](https://img.shields.io/badge/.NET%209-512BD4?logo=dotnet&logoColor=white) ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-5C2D91?logo=dotnet&logoColor=white)  ![Async](https://img.shields.io/badge/Asynchronous-green) ![Architecture](https://img.shields.io/badge/Microservices-informational) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 
 A demonstration project illustrating different asynchronous execution patterns between two distributed .NET 9 services: `ServiceA` and `ServiceB`.
 
