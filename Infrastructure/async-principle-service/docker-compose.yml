@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  servicea:
+  build:
+    context: ./ServiceA
+    dockerfile: Dockerfile
+    ports:
+      - "5006:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=UAT
+      - TZ=Asia/Bangkok
+    depends_on:
+      
+  serviceb:
+  build:
+    context: ./ServiceB
+    dockerfile: Dockerfile
+    ports:
+      - "5007:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=UAT
+      - TZ=Asia/Bangkok
+    depends_on:
+
+volumes: 
