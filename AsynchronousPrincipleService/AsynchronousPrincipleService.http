@@ -1,0 +1,6 @@
+@AsynchronousPrincipleService_HostAddress = http://localhost:5113
+
+GET {{AsynchronousPrincipleService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

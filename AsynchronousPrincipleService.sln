@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceA", "ServiceA", "{9F11EC57-B906-4B99-B534-A88F839CB11F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceB", "ServiceB", "{2D81166F-6778-4196-ADE9-A42B1A8B0BA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{07989C86-2D04-4CBA-925A-80D41C278929}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceA", "ServiceA\src\ServiceA\ServiceA.csproj", "{1DA42719-E6D4-4546-AFF6-54591AFC88F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{95AD3682-E7D8-4620-9226-9C815EDF8ECA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceB", "ServiceB\src\ServiceB\ServiceB.csproj", "{213130C2-CC5E-4BDF-9E51-949C6656CDE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DA42719-E6D4-4546-AFF6-54591AFC88F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA42719-E6D4-4546-AFF6-54591AFC88F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA42719-E6D4-4546-AFF6-54591AFC88F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA42719-E6D4-4546-AFF6-54591AFC88F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{213130C2-CC5E-4BDF-9E51-949C6656CDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{213130C2-CC5E-4BDF-9E51-949C6656CDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{213130C2-CC5E-4BDF-9E51-949C6656CDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{213130C2-CC5E-4BDF-9E51-949C6656CDE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{07989C86-2D04-4CBA-925A-80D41C278929} = {9F11EC57-B906-4B99-B534-A88F839CB11F}
+		{1DA42719-E6D4-4546-AFF6-54591AFC88F0} = {07989C86-2D04-4CBA-925A-80D41C278929}
+		{95AD3682-E7D8-4620-9226-9C815EDF8ECA} = {2D81166F-6778-4196-ADE9-A42B1A8B0BA1}
+		{213130C2-CC5E-4BDF-9E51-949C6656CDE7} = {95AD3682-E7D8-4620-9226-9C815EDF8ECA}
+	EndGlobalSection
+EndGlobal
