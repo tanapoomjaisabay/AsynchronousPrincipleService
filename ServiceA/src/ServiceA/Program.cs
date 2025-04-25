@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IRobotFactoryService, RobotFactoryService>();
+builder.Services.AddScoped<IHttpConnectService, HttpConnectService>();
 
 var app = builder.Build();
 

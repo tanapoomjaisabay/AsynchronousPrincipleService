@@ -1,9 +1,11 @@
-﻿namespace ServiceA.Services.Interfaces
+﻿using ServiceA.Models;
+
+namespace ServiceA.Services.Interfaces
 {
     public interface IRobotFactoryService
     {
-        Task<string> CreateRobot(string colour);
-        Task<string> CreateRobotAsync(string colour);
-        Task<string> ScheduleRobotCreationAsync(string colour);
+        Task<ResponseModel> CreateRobot(string colour);
+        Task<ResponseModel> CreateRobotAsync(string colour);
+        Task<ResponseModel> ScheduleRobotCreationAsync(string colour);
     }
 }

@@ -11,11 +11,17 @@ namespace ServiceA.Services
 {
     public class RobotFactoryService : IRobotFactoryService
     {
-        public RobotFactoryService() { }
+        private readonly IHttpConnectService _httpClient;
 
-        public async Task<string> CreateRobot(string colour)
+        public RobotFactoryService(IHttpConnectService httpClient) 
+        {
+            _httpClient = httpClient;
+        }
+
+        public async Task<ResponseModel> CreateRobot(string colour)
         {
             string robotDetail = "";
+            DateTime start = DateTime.Now;
 
             try
             {
@@ -27,24 +33,36 @@ namespace ServiceA.Services
                 var lag = await Lag_Creation(colour);
 
                 robotDetail += head;
-                robotDetail += "" + body;
-                robotDetail += "" + arm;
-                robotDetail += "" + lag;
+                robotDetail += ", " + body;
+                robotDetail += ", " + arm;
+                robotDetail += ", " + lag;
                 stopwatch.Stop();
                 var elapsedMs = stopwatch.ElapsedMilliseconds;
 
-                Console.WriteLine(robotDetail);
-                return $"Request took {elapsedMs / 1000} s";
+                return new ResponseModel
+                {
+                    result = $"Request took {elapsedMs / 1000} s",
+                    robotDetail = robotDetail,
+                    startTime = start,
+                    finishTime = DateTime.Now
+                };
             }
             catch (Exception ex)
             {
-                return "Error, " + ex.Message;
+                return new ResponseModel
+                {
+                    result = "Error, " + ex.Message,
+                    robotDetail = "",
+                    startTime = start,
+                    finishTime = DateTime.Now
+                };
             }
         }
 
-        public async Task<string> CreateRobotAsync(string colour)
+        public async Task<ResponseModel> CreateRobotAsync(string colour)
         {
             string robotDetail = "";
+            DateTime start = DateTime.Now;
 
             try
             {
@@ -56,24 +74,36 @@ namespace ServiceA.Services
                 var lag =  Lag_Creation(colour);
 
                 robotDetail += await head;
-                robotDetail += "" + await body;
-                robotDetail += "" + await arm;
-                robotDetail += "" + await lag;
+                robotDetail += ", " + await body;
+                robotDetail += ", " + await arm;
+                robotDetail += ", " + await lag;
                 stopwatch.Stop();
                 var elapsedMs = stopwatch.ElapsedMilliseconds;
 
-                Console.WriteLine(robotDetail);
-                return $"Request took {elapsedMs / 1000} s";
+                return new ResponseModel
+                {
+                    result = $"Request took {elapsedMs / 1000} s",
+                    robotDetail = robotDetail,
+                    startTime = start,
+                    finishTime = DateTime.Now
+                };
             }
             catch (Exception ex)
             {
-                return "Error, " + ex.Message;
+                return new ResponseModel
+                {
+                    result = "Error, " + ex.Message,
+                    robotDetail = "",
+                    startTime = start,
+                    finishTime = DateTime.Now
+                };
             }
         }
 
-        public async Task<string> ScheduleRobotCreationAsync(string colour)
+        public async Task<ResponseModel> ScheduleRobotCreationAsync(string colour)
         {
             string robotDetail = "";
+            DateTime start = DateTime.Now;
 
             try
             {
@@ -89,12 +119,23 @@ namespace ServiceA.Services
                 stopwatch.Stop();
                 var elapsedMs = stopwatch.ElapsedMilliseconds;
 
-                Console.WriteLine(robotDetail);
-                return $"Request took {elapsedMs / 1000} s";
+                return new ResponseModel 
+                {
+                    result= $"Request took {elapsedMs / 1000} s",
+                    robotDetail = robotDetail,
+                    startTime = start,
+                    finishTime = DateTime.Now
+                };
             }
             catch (Exception ex)
             {
-                return "Error, " + ex.Message;
+                return new ResponseModel
+                {
+                    result = "Error, " + ex.Message,
+                    robotDetail = "",
+                    startTime = start,
+                    finishTime = DateTime.Now
+                };
             }
         }
 
@@ -102,7 +143,7 @@ namespace ServiceA.Services
         {
             string url = "HeadCreation";
             string data = JsonSerializer.Serialize(new RequestModel { colour = colour });
-            var response = await CallServiceBAsync(url, data);
+            var response = await _httpClient.CallServiceBAsync(url, data);
 
             return response.result;
         }
@@ -111,7 +152,7 @@ namespace ServiceA.Services
         {
             string url = "BodyCreation";
             string data = JsonSerializer.Serialize(new RequestModel { colour = colour });
-            var response = await CallServiceBAsync(url, data);
+            var response = await _httpClient.CallServiceBAsync(url, data);
 
             return response.result;
         }
@@ -120,7 +161,7 @@ namespace ServiceA.Services
         {
             string url = "ArmCreation";
             string data = JsonSerializer.Serialize(new RequestModel { colour = colour });
-            var response = await CallServiceBAsync(url, data);
+            var response = await _httpClient.CallServiceBAsync(url, data);
 
             return response.result;
         }
@@ -129,22 +170,9 @@ namespace ServiceA.Services
         {
             string url = "LagCreation";
             string data = JsonSerializer.Serialize(new RequestModel { colour = colour });
-            var response = await CallServiceBAsync(url, data);
+            var response = await _httpClient.CallServiceBAsync(url, data);
 
             return response.result;
-        }
-
-        public async Task<ResponseModel> CallServiceBAsync(string url, string json)
-        {
-            using (var client = new HttpClient())
-            {
-                var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync($"http://localhost:5007/api/RobotFactory/{url}", httpContent);
-                response.EnsureSuccessStatusCode();
-
-                var content = await response.Content.ReadFromJsonAsync<ResponseModel>();
-                return content!;
-            }
         }
     }
 }
