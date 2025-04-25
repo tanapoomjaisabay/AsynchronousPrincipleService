@@ -58,11 +58,11 @@ AsynchronousPrincipleService/
 
 ## 📡 API Endpoints (ServiceA)
 
-| Scenario                   | Method | Endpoint                                  | Description |
-|-----------------------------|--------|-------------------------------------------|-------------|
-| CreateRobotWithSequence     | POST   | `/api/robot/create-with-sequence`         | Sequential execution |
-| CreateRobotWithParallel     | POST   | `/api/robot/create-with-parallel`         | Parallel execution |
-| ScheduleRobotCreation       | POST   | `/api/robot/schedule-creation`            | Fire-and-forget execution |
+| Scenario                   | Method | Description |
+|-----------------------------|--------|-------------|
+| CreateRobotWithSequence     | POST   | Sequential execution |
+| CreateRobotWithParallel     | POST   | Parallel execution |
+| ScheduleRobotCreation       | POST   | Fire-and-forget execution |
 
 ---
 
@@ -119,16 +119,30 @@ http://localhost:5006/api/robotfactory/schedulerobotcreation?colour=Blue
 
 ---
 
-## 📦 Docker Deployment Instructions
-
-### Build and Run
+## 🚀 Quick Start
 
 ```bash
-docker-compose up -d
+# 1. clone & change directory
+git clone https://github.com/tanapoomjaisabay/AsynchronousPrincipleService.git
+cd AsynchronousPrincipleService
+
+# 2. spin up MSSQL + both APIs
+docker compose -f infrastructure/async-principle-service/docker-compose.yml up -d
 ```
 
-### Services Accessible at:
-- ServiceA: [http://localhost:5006](http://localhost:5006)
-- ServiceB: [http://localhost:5007](http://localhost:5007)
+Visit **Swagger UI**:
+
+* ServiceA → <http://localhost:5006/swagger>
+* ServiceB → <http://localhost:5007/swagger>
 
 ---
+
+## 🤝 Contributing
+
+PRs are welcome! Feel free to open issues, suggest refactors, or add new features.
+
+---
+
+## 📜 License
+
+Distributed under the **MIT** license. See `LICENSE` for more info.
